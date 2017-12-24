@@ -1,0 +1,14 @@
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = linux
+Target = linux-hardened
+Target = linux-lts
+Target = linux-zen
+
+[Action]
+Description = Restore Linux kernel modules
+When = PostTransaction
+Depends = coreutils
+Depends = rsync
+Exec = /bin/sh -xc 'KVER="${KVER:-$(uname -r)}"; if test -e "/lib/modules/backup/${KVER}"; then rsync -AHXal --ignore-existing "/lib/modules/backup/${KVER}" /lib/modules/; fi; rm -rf /lib/modules/backup'
