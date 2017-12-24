@@ -1,0 +1,19 @@
+# ignore everything
+*
+!.gitignore
+
+# except PKGBUILD needed files
+!PKGBUILD
+!*.install
+
+# common wing-man files
+!*.diff
+!*.patch
+
+# add files that don't have an online source
+kernel-modules-hook.install
+linux-modules-cleanup.conf
+linux-modules-cleanup.service
+linux-modules-post.hook
+linux-modules-pre.hook
+
