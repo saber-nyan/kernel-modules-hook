@@ -18,12 +18,15 @@ Losing uptime after reboots due to kernel update?
 Do not worry, backups are automatically cleaned.
 
 ## Installation
+[AUR link](https://aur.archlinux.org/packages/kernel-modules-hook/)
 ```bash
+$ %your_aur_helper% -S kernel-modules-hook
+
+# Or from git:
+
 $ git clone https://github.com/saber-nyan/kernel-modules-hook.git kmh
 $ cd kmh
 $ makepkg -sci
 $ sudo systemctl daemon-reload
 $ sudo systemctl enable linux-modules-cleanup
-
-# DONE!
 ```
