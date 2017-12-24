@@ -23,7 +23,6 @@ sha256sums=(
 		)
 
 package() {
-	cd "$pkgname-$pkgver"
 	install -Dm644 'linux-modules-cleanup.conf' "${pkgdir}/usr/lib/tmpfiles.d/linux-modules-cleanup.conf"
 	install -Dm644 'linux-modules-cleanup.service' "${pkgdir}/usr/lib/systemd/system/linux-modules-cleanup.service"
 	install -Dm644 'linux-modules-post.hook' "${pkgdir}/usr/share/libalpm/hooks/linux-modules-post.hook"
