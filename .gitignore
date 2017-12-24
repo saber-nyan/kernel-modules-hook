@@ -4,6 +4,7 @@
 
 # except PKGBUILD needed files
 !PKGBUILD
+!.SRCINFO
 !*.install
 
 # common wing-man files
