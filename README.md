@@ -20,7 +20,7 @@ Do not worry, backups are automatically cleaned.
 ## Installation
 [AUR link](https://aur.archlinux.org/packages/kernel-modules-hook/)
 ```bash
-$ %your_aur_helper% -S kernel-modules-hook
+$ ${your_aur_helper} -S kernel-modules-hook
 
 # Or from git:
 
