@@ -1,7 +1,7 @@
 # Maintainer: saber-nyan <saber-nyan@ya.ru>
 # Hooks: https://www.reddit.com/r/archlinux/comments/4zrsc3/keep_your_system_fully_functional_after_a_kernel/d6yin0r/
 pkgname=kernel-modules-hook
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Keeps your system fully functional after a kernel upgrade"
 arch=('any')
@@ -18,8 +18,8 @@ source=(
 sha256sums=(
 		"4169b44c297ddb7aad2220c6eba7c7942e3396f92528c59617955ab5560cb4cf"
 		"5d947290ef8c94b33c79c531e5615f4c9bea38e7649092d34af3bf0af5b1ca24"
-		"94eaaeb612e30992bf0197cb785b3ec1b8e09fc6b2ea437bd59bc4f87f828e76"
-		"81cb83bb2a352e4d3ab32bb12bc4f7ad6624e3f6b63dc176d881c73425792633"
+		"b8b5e939c49e77fb7a12cd4cd9743951a949ba6c48ca18e4f9d55653e9e58da2"
+		"dbb765909596454d651023fdde2fc97b6ab26733fae39f5a45f4ae235681d4e6"
 		)
 
 package() {

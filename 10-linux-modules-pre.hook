@@ -1,6 +1,6 @@
 [Trigger]
 Operation = Upgrade
-Type = Package
+Type = File
 Target = boot/vmlinuz*
 
 
