@@ -1,13 +1,10 @@
 [Trigger]
 Operation = Upgrade
 Type = Package
-Target = linux
-Target = linux-hardened
-Target = linux-lts
-Target = linux-zen
+Target = boot/vmlinuz*
 
 [Action]
-Description = Restore Linux kernel modules
+Description = Restoring Linux kernel modules...
 When = PostTransaction
 Depends = coreutils
 Depends = rsync
