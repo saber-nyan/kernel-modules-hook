@@ -16,13 +16,11 @@ source=(
 		"10-linux-modules-pre.hook"
 		"UNLICENSE"
 		)
-sha256sums=(
-		'4169b44c297ddb7aad2220c6eba7c7942e3396f92528c59617955ab5560cb4cf'
-		'5d947290ef8c94b33c79c531e5615f4c9bea38e7649092d34af3bf0af5b1ca24'
-		'53f099942790b209fabf757b97c2fa9ab6e309e11c47febf8e120fb9f5fe8adf'
-		'ca081465b5f2de547539fde2832932772058c34dd9f3178e33717b383eb76c9b'
-		'7e12e5df4bae12cb21581ba157ced20e1986a0508dd10d0e8a4ab9a4cf94e85c'
-		)
+sha256sums=('4169b44c297ddb7aad2220c6eba7c7942e3396f92528c59617955ab5560cb4cf'
+            '5d947290ef8c94b33c79c531e5615f4c9bea38e7649092d34af3bf0af5b1ca24'
+            '1161c1462c59acad138b9dd4b5befe7044105c6486cbfc71612139c3ab7f44ff'
+            '68b5e26debc6a20c02279980f37201a03cc6b79219af4a596fa497107b9698b3'
+            '7e12e5df4bae12cb21581ba157ced20e1986a0508dd10d0e8a4ab9a4cf94e85c')
 
 package() {
 	install -Dm644 'linux-modules-cleanup.conf' "${pkgdir}/usr/lib/tmpfiles.d/linux-modules-cleanup.conf"

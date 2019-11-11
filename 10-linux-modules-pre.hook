@@ -1,8 +1,7 @@
 [Trigger]
 Operation = Upgrade
-Type = File
-Target = boot/vmlinuz*
-
+Type = Path
+Target = usr/lib/modules/*/vmlinuz
 
 [Action]
 Description = Saving Linux kernel modules...
