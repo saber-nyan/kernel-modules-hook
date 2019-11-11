@@ -1,6 +1,6 @@
 pkgbase = kernel-modules-hook
 	pkgdesc = Keeps your system fully functional after a kernel upgrade
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/saber-nyan/kernel-modules-hook
 	install = kernel-modules-hook.install
@@ -14,8 +14,8 @@ pkgbase = kernel-modules-hook
 	source = UNLICENSE
 	sha256sums = 4169b44c297ddb7aad2220c6eba7c7942e3396f92528c59617955ab5560cb4cf
 	sha256sums = 5d947290ef8c94b33c79c531e5615f4c9bea38e7649092d34af3bf0af5b1ca24
-	sha256sums = 53f099942790b209fabf757b97c2fa9ab6e309e11c47febf8e120fb9f5fe8adf
-	sha256sums = ca081465b5f2de547539fde2832932772058c34dd9f3178e33717b383eb76c9b
+	sha256sums = 1161c1462c59acad138b9dd4b5befe7044105c6486cbfc71612139c3ab7f44ff
+	sha256sums = 68b5e26debc6a20c02279980f37201a03cc6b79219af4a596fa497107b9698b3
 	sha256sums = 7e12e5df4bae12cb21581ba157ced20e1986a0508dd10d0e8a4ab9a4cf94e85c
 
 pkgname = kernel-modules-hook

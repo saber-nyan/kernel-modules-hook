@@ -1,7 +1,7 @@
-# Maintainer: saber-nyan <saber-nyan@ya.ru>
+# Maintainer: Artoria Pendragon <saber-nyan@ya.ru>
 # Hooks: https://www.reddit.com/r/archlinux/comments/4zrsc3/keep_your_system_fully_functional_after_a_kernel/d6yin0r/
 pkgname=kernel-modules-hook
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="Keeps your system fully functional after a kernel upgrade"
 arch=('any')
