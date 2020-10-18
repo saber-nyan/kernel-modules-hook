@@ -1,7 +1,7 @@
 # Maintainer: Artoria Pendragon <saber-nyan@ya.ru>
 # Hooks: https://www.reddit.com/r/archlinux/comments/4zrsc3/keep_your_system_fully_functional_after_a_kernel/d6yin0r/
 pkgname=kernel-modules-hook
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="Keeps your system fully functional after a kernel upgrade"
 arch=('any')
@@ -16,8 +16,8 @@ source=("linux-modules-cleanup.conf"
 		"UNLICENSE")
 sha256sums=('4169b44c297ddb7aad2220c6eba7c7942e3396f92528c59617955ab5560cb4cf'
             '5d947290ef8c94b33c79c531e5615f4c9bea38e7649092d34af3bf0af5b1ca24'
-            '900502d030e925fca6188b9448fbaf6562d6e23cd5c50938cdf00522825f76c2'
-            'f7ea2947c3fbe1510b3ea5cc5793b8197f0718dcb12daea3da9b27b3cf1c4116'
+            'a1bbe644b5285dbc66eb4f09b9752345920542e8510d79e76b66284d6f3afd78'
+            '85912aedf141b000bba9233069e1e9d17a0971d180a62a39e8fb263cd959139b'
             '7e12e5df4bae12cb21581ba157ced20e1986a0508dd10d0e8a4ab9a4cf94e85c')
 
 package() {
