@@ -20,5 +20,5 @@ Do not worry, backups are automatically cleaned.
 ## Installation
 [Community](https://archlinux.org/packages/community/any/kernel-modules-hook/)
 ```bash
-$ pacman -S kernel-modules-hook
+$ sudo pacman -S kernel-modules-hook
 ```
