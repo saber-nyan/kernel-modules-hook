@@ -1,0 +1,24 @@
+#!/bin/bash -e
+
+kver = $(uname -r)
+while read -r line; do
+    # We only care about the running kernel
+    if [[ "$line" == "usr/lib/modules/$kver/vmlinuz" ]];then
+        if [[ mountpoint --nofollow --quiet ${line%vmlinuz} ]];then
+            # Mount point is already present
+            # This means we already ran that hook during 'remove case'
+            #
+            # Remove the mount so we can reinstall the kernel
+            umount ${line%vmlinuz}
+        elif [[ -f "$line" && ! -d "/usr/lib/modules/running-kernel/" ]];then
+            # Kernel install is present and we do not have a copy
+            #
+            # This is the removal case, so we save the kernel
+            mkdir /usr/lib/modules/running-kernel
+            cp --archive --link /usr/lib/modules/{$kver}/{kernel,modules*} \
+                /usr/lib/modules/running-kernel/
+        fi
+        # If we are re-removing the running kernel, (after removing + reinstalling),
+        # we already have a backup and this hook is a no-op
+    fi
+done

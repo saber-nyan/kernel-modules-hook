@@ -6,20 +6,21 @@ pkgrel=1
 pkgdesc="Keeps your system fully functional after a kernel upgrade"
 arch=('any')
 url="https://github.com/saber-nyan/kernel-modules-hook"
-depends=('rsync')
-install="${pkgname}.install"
 license=('Unlicense')
 source=("linux-modules-cleanup.conf"
-		"linux-modules-cleanup.service"
-		"10-linux-modules-post.hook"
-		"10-linux-modules-pre.hook")
-sha256sums=('4169b44c297ddb7aad2220c6eba7c7942e3396f92528c59617955ab5560cb4cf'
-            '5d947290ef8c94b33c79c531e5615f4c9bea38e7649092d34af3bf0af5b1ca24'
-            '900502d030e925fca6188b9448fbaf6562d6e23cd5c50938cdf00522825f76c2'
-            'f7ea2947c3fbe1510b3ea5cc5793b8197f0718dcb12daea3da9b27b3cf1c4116')
+        "10-linux-modules-post.hook"
+        "10-linux-modules-pre.hook"
+        "linux-modules-restore"
+        "linux-modules-save"
+)
+sha256sums=('950f851eba08dac4d0b93ff62b3fb16ddacd4f8ebb98a2435f80bf05f2ea5a29'
+            '0492722850f90066d33baf7896eb4625fd812890bdb03f025184c8b4bf0ef94f'
+            '2b86a037a9a394f57279408745bf5b19542f26b0ad862fd514470cd145108c10'
+            '7cf080b0d0d5a07ccb414ffb793525e554ca95447201f22b917f0be04ff48d2a'
+            '3168ea6c2740dbde4229d718e44f6262f2d10aef529fb446cdb4f1778b8b6424')
 
 package() {
 	install -Dm644 'linux-modules-cleanup.conf' "${pkgdir}/usr/lib/tmpfiles.d/linux-modules-cleanup.conf"
-	install -Dm644 'linux-modules-cleanup.service' "${pkgdir}/usr/lib/systemd/system/linux-modules-cleanup.service"
 	install -Dm644 10-linux-modules-{pre,post}.hook -t "${pkgdir}/usr/share/libalpm/hooks/"
+	install -Dm755 linux-modules-{save,restore} -t "${pkgdir}/usr/share/libalpm/scripts/"
 }
