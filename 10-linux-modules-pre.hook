@@ -1,11 +1,11 @@
 [Trigger]
 Operation = Install
-Operation = Upgrade
+Operation = Remove
 Type = Path
 Target = usr/lib/modules/*/vmlinuz
 
 [Action]
-Description = Saving Linux kernel modules...
+Description = Saving Linux kernel modules directory (hardlinks)...
 When = PreTransaction
-Depends = rsync
-Exec = /bin/sh -c 'KVER="${KVER:-$(uname -r)}"; if test -e "/usr/lib/modules/${KVER}"; then rsync -AHXal --delete-after "/usr/lib/modules/${KVER}" /usr/lib/modules/backup/; fi'
+Exec = /usr/share/libalpm/scripts/linux-modules-save
+NeedsTargets
