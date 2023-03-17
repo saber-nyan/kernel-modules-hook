@@ -15,10 +15,14 @@ Losing uptime after reboots due to kernel update?
 * Enjoy.<br/>
 ![Enjoy](https://i.imgur.com/WQAYSSR.png)
 
-Do not worry, backups are automatically cleaned.
+Do not worry, backups can be automatically cleaned (see installation instructions).
 
 ## Installation
 [Community](https://archlinux.org/packages/community/any/kernel-modules-hook/)
 ```bash
 $ pacman -S kernel-modules-hook
+```
+Auto cleanup backups
+```bash
+$ sudo systemctl enable linux-modules-cleanup
 ```
