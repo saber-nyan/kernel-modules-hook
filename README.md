@@ -18,7 +18,7 @@ Losing uptime after reboots due to kernel update?
 Do not worry, backups are automatically cleaned.
 
 ## Installation
-[Community](https://archlinux.org/packages/community/any/kernel-modules-hook/)
+[Extra](https://archlinux.org/packages/extra/any/kernel-modules-hook/)
 ```bash
 $ pacman -S kernel-modules-hook
 ```
