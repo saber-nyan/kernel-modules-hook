@@ -1,0 +1,64 @@
+#!/bin/bash -e
+# If the running kernel's modules were removed, index the saved copy with depmod.
+# The package-owned files depmod needs are linked back so 60-depmod.hook rebuilds
+# the index instead of deleting it; "finish" removes them after that hook so only
+# unowned index files remain and pacman can reinstall the running kernel.
+
+kver=$(uname -r)
+dir=/usr/lib/modules/$kver
+save=/usr/lib/modules/.running/$kver
+conf=/run/depmod.d/kernel-modules-hook.conf
+owned=(modules.order modules.builtin modules.builtin.modinfo)
+
+if [[ ${1-} == finish ]]; then
+	# Running kernel installed again: drop the save once 60-depmod moved the index off it.
+	if [[ -d $dir/kernel ]]; then
+		if [[ -d $save ]] && ! grep -qF "$save/" "$dir/modules.dep" 2>/dev/null; then
+			rm -rf "$save"
+			rmdir --ignore-fail-on-non-empty "${save%/*}"
+		fi
+		exit 0
+	fi
+	for f in "${owned[@]}"; do
+		if [[ $dir/$f -ef $save/$f ]]; then
+			rm -f "$dir/$f"
+		fi
+	done
+	exit 0
+fi
+
+# Backup left by the 0.1.x pre hook when upgrading this package and a kernel together.
+if [[ ! -d $save && -d /usr/lib/modules/backup/$kver/kernel ]]; then
+	mkdir -p "${save%/*}"
+	mv "/usr/lib/modules/backup/$kver" "$save"
+fi
+rm -rf /usr/lib/modules/backup
+
+[[ -d $save && ! -d $dir/kernel ]] || exit 0
+
+# depmod matches the version as an unanchored extended regex.
+re="^$(sed 's/[][\.*^$+?(){}|]/\\&/g' <<<"$kver")\$"
+
+# With Arch's search.conf, later external lines win: updates > extramodules > kernel.
+shopt -s nullglob
+mkdir -p "$dir" "${conf%/*}"
+{
+	echo "external $re $save/kernel"
+	for d in "$save"/*/; do
+		d=${d%/}
+		case ${d##*/} in
+			kernel|updates|build|source) ;;
+			*) [[ -L $d ]] || echo "external $re $d" ;;
+		esac
+	done
+	if [[ -d $save/updates ]]; then
+		echo "external $re $save/updates"
+	fi
+} > "$conf"
+
+for f in "${owned[@]}"; do
+	if [[ -e $save/$f ]]; then
+		ln -f "$save/$f" "$dir/$f"
+	fi
+done
+depmod "$kver"

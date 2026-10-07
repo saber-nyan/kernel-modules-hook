@@ -1,0 +1,7 @@
+[Unit]
+Description=Remove saved modules of kernels that are not running
+ConditionDirectoryNotEmpty=/usr/lib/modules/.running
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash -c 'for i in /usr/lib/modules/.running/*; do [[ $${i##*/} = \'%v\' ]] || rm -rf "$${i}"; done; rmdir --ignore-fail-on-non-empty /usr/lib/modules/.running'

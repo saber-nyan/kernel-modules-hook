@@ -1,0 +1,23 @@
+#!/bin/bash -e
+# Hardlink the running kernel's modules aside before pacman removes them.
+
+kver=$(uname -r)
+dir=/usr/lib/modules/$kver
+save=/usr/lib/modules/.running/$kver
+
+# Stop pointing depmod at the saved copy in case the running kernel is being reinstalled.
+rm -f /run/depmod.d/kernel-modules-hook.conf
+
+# Only save a complete tree, and swap it in whole so a failure keeps the old save.
+if [[ -e $dir/vmlinuz && -d $dir/kernel ]]; then
+	rm -rf "$save.new"
+	mkdir -p "$save.new"
+	for e in "$dir"/*; do
+		case ${e##*/} in
+			build|source) ;;
+			*) cp -al "$e" "$save.new/" ;;
+		esac
+	done
+	rm -rf "$save"
+	mv "$save.new" "$save"
+fi

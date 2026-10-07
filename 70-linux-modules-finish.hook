@@ -1,0 +1,12 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Type = Path
+Target = usr/lib/modules/*/
+Target = !usr/lib/modules/*/?*
+
+[Action]
+Description = Finishing Linux kernel modules restore...
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/linux-modules-restore finish
